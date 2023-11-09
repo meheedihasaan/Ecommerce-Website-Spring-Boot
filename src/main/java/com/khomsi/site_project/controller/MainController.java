@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.webjars.NotFoundException;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,12 +29,8 @@ public class MainController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("listCategories", categoryRep.findAllEnabled());
-        try {
-            model.addAttribute("listProducts", productService.getRandomAmountOfProducts());
-        } catch (ProductNotFoundException ex) {
-            model.addAttribute("error", ex.getCause().getCause().getMessage());
-            return "/error/404";
-        }
+        List<Product> products = new ArrayList<>();
+        model.addAttribute("listProducts", products);
         return "index";
     }
 
