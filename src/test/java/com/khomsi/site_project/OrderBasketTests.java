@@ -13,12 +13,13 @@ import org.springframework.test.annotation.Rollback;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(value = false)
-public class OrderBasketTests {
+class OrderBasketTests {
     @Autowired
     private OrderBasketRepository orderBasketRep;
 
@@ -26,7 +27,7 @@ public class OrderBasketTests {
     private TestEntityManager entityManager;
 
     @Test
-    public void testAddOneOrderBasketProduct() {
+    void testAddOneOrderBasketProduct() {
         Product product = entityManager.find(Product.class, 6);
         User user = entityManager.find(User.class, 8);
 
@@ -43,7 +44,7 @@ public class OrderBasketTests {
     }
 
     @Test
-    public void testGetOrderBasketProdByUser() {
+    void testGetOrderBasketProdByUser() {
         User user = new User();
         user.setId(8);
 

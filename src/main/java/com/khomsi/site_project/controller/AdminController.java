@@ -52,7 +52,7 @@ public class AdminController {
     }
 
     @GetMapping("/products/edit/{id}")
-    public String updateProduct(@PathVariable(name = "id") int id, Model model, RedirectAttributes attributes) {
+    public String updateProduct(@PathVariable int id, Model model, RedirectAttributes attributes) {
         try {
             Product product = productService.getProduct(id);
             List<Vendor> vendorList = vendorService.getAllVendors();
@@ -87,7 +87,7 @@ public class AdminController {
     }
 
     @GetMapping("/products/delete/{id}")
-    public String deleteProduct(@PathVariable(name = "id") Integer id, RedirectAttributes redirect) {
+    public String deleteProduct(@PathVariable Integer id, RedirectAttributes redirect) {
         try {
             productService.deleteProduct(id);
             redirect.addFlashAttribute("message",
@@ -122,7 +122,7 @@ public class AdminController {
     }
 
     @GetMapping("/users/edit/{id}")
-    public String updateUser(@PathVariable(name = "id") int id, Model model, RedirectAttributes redirect) {
+    public String updateUser(@PathVariable int id, Model model, RedirectAttributes redirect) {
         try {
             User user = userService.getUser(id);
             UserInfo userInfo = userInfoService.getUserDetail(id);
@@ -137,7 +137,7 @@ public class AdminController {
     }
 
     @GetMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable(name = "id") Integer id, RedirectAttributes redirect) {
+    public String deleteUser(@PathVariable Integer id, RedirectAttributes redirect) {
         try {
             userService.deleteUser(id);
             redirect.addFlashAttribute("message",
@@ -184,7 +184,7 @@ public class AdminController {
     }
 
     @GetMapping("/categories/delete/{id}")
-    public String deleteCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirect) {
+    public String deleteCategory(@PathVariable Integer id, RedirectAttributes redirect) {
         try {
             categoryService.deleteCategory(id);
             redirect.addFlashAttribute("message",
@@ -214,7 +214,7 @@ public class AdminController {
     }
 
     @GetMapping("/vendors/edit/{id}")
-    public String updateVendor(@PathVariable(name = "id") int id, Model model, RedirectAttributes redirect) {
+    public String updateVendor(@PathVariable int id, Model model, RedirectAttributes redirect) {
         try {
             Vendor vendor = vendorService.getVendor(id);
             model.addAttribute("vendor", vendor);
@@ -226,7 +226,7 @@ public class AdminController {
     }
 
     @GetMapping("/vendors/delete/{id}")
-    public String deleteVendor(@PathVariable(name = "id") Integer id, RedirectAttributes redirect) {
+    public String deleteVendor(@PathVariable Integer id, RedirectAttributes redirect) {
         try {
             vendorService.deleteVendor(id);
             redirect.addFlashAttribute("message",
@@ -251,7 +251,7 @@ public class AdminController {
     }
 
     @GetMapping("/orders/edit/{id}")
-    public String updateOrder(@PathVariable(name = "id") int id, Model model, RedirectAttributes redirect) {
+    public String updateOrder(@PathVariable int id, Model model, RedirectAttributes redirect) {
         try {
             Order order = ordersService.getOrder(id);
             model.addAttribute("orderTypes", OrderType.values());
@@ -264,7 +264,7 @@ public class AdminController {
     }
 
     @GetMapping("/orders/delete/{id}")
-    public String deleteOrder(@PathVariable(name = "id") Integer id, RedirectAttributes redirect) {
+    public String deleteOrder(@PathVariable Integer id, RedirectAttributes redirect) {
         try {
             ordersService.deleteOrder(id);
             redirect.addFlashAttribute("message",

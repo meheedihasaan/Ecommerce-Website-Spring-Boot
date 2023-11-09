@@ -36,7 +36,7 @@ public class ProductController {
 
     @GetMapping("/category/{category_alias}/page/{pageNum}")
     public String viewCategoryByPage(@PathVariable("category_alias") String alias,
-                                     Model model, @PathVariable("pageNum") int pageNum) {
+                                     Model model, @PathVariable int pageNum) {
         try {
             Category category = categoryService.getCategoryByAlias(alias);
 
@@ -90,7 +90,7 @@ public class ProductController {
      */
     @GetMapping("/search/page/{pageNum}")
     public String searchByPage(@Param("keyword") String keyword,
-                               @PathVariable("pageNum") int pageNum,
+                               @PathVariable int pageNum,
                                Model model) {
         Page<Product> productsPage = productService.search(keyword, pageNum);
         List<Product> resultList = productsPage.getContent();

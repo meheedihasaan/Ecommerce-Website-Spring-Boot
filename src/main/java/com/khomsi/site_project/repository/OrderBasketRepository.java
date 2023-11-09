@@ -15,8 +15,10 @@ public interface OrderBasketRepository extends JpaRepository<OrderBasket, Intege
     public OrderBasket findByUserAndProduct(User user, Product product);
 
     //It's update/delete query so we use @modifying
-    @Query("UPDATE OrderBasket orderBasket SET orderBasket.quantity = ?1 WHERE orderBasket.product.id = ?2 " +
-            "AND orderBasket.user.id = ?3")
+    @Query("""
+            UPDATE OrderBasket orderBasket SET orderBasket.quantity = ?1 WHERE orderBasket.product.id = ?2 \
+            AND orderBasket.user.id = ?3\
+            """)
     @Modifying
     public void updateQuantity(Integer quantity, Integer productId, Integer userId);
 

@@ -11,12 +11,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class UserTest {
+class UserTest {
 
     @Autowired
     UserRepository userRepository;
+
     @Test
-    public void testFindByLogin(){
+    void testFindByLogin(){
         String login = "admin";
         User user = userRepository.findByLogin(login);
 

@@ -2,7 +2,7 @@ package com.khomsi.site_project.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;

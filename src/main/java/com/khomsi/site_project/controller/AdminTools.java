@@ -56,7 +56,7 @@ public class AdminTools {
 
     //Controller in admin panel for users
     @GetMapping("/admin/users/page/{pageNum}")
-    public String listUsersByPage(@PathVariable(name = "pageNum") int pageNum, Model model) {
+    public String listUsersByPage(@PathVariable int pageNum, Model model) {
         Page<User> page = userService.listByPage(pageNum);
         List<User> listUsers = page.getContent();
 
@@ -72,7 +72,7 @@ public class AdminTools {
 
     //Controller in admin panel for vendors
     @GetMapping("/admin/vendors/page/{pageNum}")
-    public String listVendorsByPage(@PathVariable(name = "pageNum") int pageNum, Model model) {
+    public String listVendorsByPage(@PathVariable int pageNum, Model model) {
         Page<Vendor> page = vendorService.listByPage(pageNum);
         List<Vendor> vendorList = page.getContent();
 
@@ -88,7 +88,7 @@ public class AdminTools {
 
     //Controller in admin panel for orders
     @GetMapping("/admin/orders/page/{pageNum}")
-    public String listOrdersByPage(@PathVariable(name = "pageNum") int pageNum, Model model) {
+    public String listOrdersByPage(@PathVariable int pageNum, Model model) {
         Page<Order> page = ordersService.listByPage(pageNum);
         List<Order> orderList = page.getContent();
 
@@ -105,7 +105,7 @@ public class AdminTools {
 
     //Controller in admin panel for categories to display pagination
     @GetMapping("/admin/categories/page/{pageNum}")
-    public String listCategoriesByPage(@PathVariable(name = "pageNum") int pageNum, Model model) {
+    public String listCategoriesByPage(@PathVariable int pageNum, Model model) {
         CategoryPageInfo pageInfo = new CategoryPageInfo();
         List<Category> categoryList = categoryService.listByPage(pageInfo, pageNum);
 
@@ -128,7 +128,7 @@ public class AdminTools {
 
     //Controller in admin panel for products
     @GetMapping("/admin/products/page/{pageNum}")
-    public String listProductsByPage(@PathVariable(name = "pageNum") int pageNum, Model model,
+    public String listProductsByPage(@PathVariable int pageNum, Model model,
                                      @Param("sortField") String sortField,
                                      @Param("sortDir") String sortDir,
                                      @Param("keyword") String keyword,
@@ -159,7 +159,7 @@ public class AdminTools {
         return "admin/product/products";
     }
 
-    public void pageCountMethod(@PathVariable("pageNum") int pageNum, Model model, Page<?> page,
+    public void pageCountMethod(@PathVariable int pageNum, Model model, Page<?> page,
                                 long startCount, long endCount) {
         if (endCount > page.getTotalElements()) {
             endCount = page.getTotalElements();

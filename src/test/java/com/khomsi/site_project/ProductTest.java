@@ -18,10 +18,10 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+//@Rollback(value = false)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-//@Rollback(value = false)
-public class ProductTest {
+class ProductTest {
     @Autowired
     private ProductRepository productRepo;
 
@@ -83,7 +83,7 @@ public class ProductTest {
     }
 
     @Test
-    public void testSearchProduct(){
+    void testSearchProduct(){
         String keyword = "Apple";
         int pageNum =  0;
         int pageSize = 4;

@@ -10,15 +10,15 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+//@Rollback(value = false)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-//@Rollback(value = false)
-public class ProductRepositoryTest {
+class ProductRepositoryTest {
     @Autowired
     ProductRepository productRepository;
 
     @Test
-    public void testFindByAlias() {
+    void testFindByAlias() {
         String alias = "samsung";
 
         Product product = productRepository.findByAlias(alias);
